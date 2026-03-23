@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <title>Gallery | Ashapura Garden</title>
+    <link rel="icon" href="data:,">
+    <meta content="Explore our beautiful gallery featuring authentic Indian dishes, restaurant ambiance, and special moments at Ashapura Garden." name="description" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        @font-face {
+            font-family: 'TT Ramillas regular';
+            src: url('fonts/ttramillas_regular.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TT Ramillas medium';
+            src: url('fonts/ttramillas_medium.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'satoshi';
+            src: url('fonts/Satoshi-Regular.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FEF8E8;
+            --secondary: #603000;
+            --accent: #1C1C1C;
+            --dark: #2c2c2c;
+            --transition: all 0.3s ease;
+            --shadow-soft: 0 8px 30px rgba(96, 48, 0, 0.08);
+            --shadow-hover: 0 15px 40px rgba(96, 48, 0, 0.15);
+        }
+
+        html {
+            font-family: "satoshi", sans-serif;
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--primary);
+            color: var(--accent);
+            font-family: "satoshi", sans-serif;
+            font-size: clamp(14px, 1vw, 18px);
+            font-weight: 400;
+            line-height: 1.5;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: .3rem;
+            left: 0;
+            padding: 0 6.5rem;
+            width: 100vw;
+            z-index: 100000;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            gap: 2.2rem;
+        }
+
+        .nav-right {
+            justify-content: flex-end;
+        }
+
+        .nav-link {
+            position: relative;
+            height: 1.2em;
+            overflow: hidden;
+            font-family: 'satoshi', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s linear;
+        }
+
+        .nav-link span {
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nav-link span:last-child {
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+
+        .nav-link:hover span:first-child {
+            transform: translateY(-120%);
+        }
+
+        .nav-link:hover span:last-child {
+            transform: translateY(-100%);
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-center img {
+            display: block;
+            width: auto;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 10001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.3s;
+            z-index: 10001;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--primary);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            flex-direction: column;
+            pointer-events: none;
+            gap: 40px;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .mobile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .mobile-links a {
+            font-family: 'TT Ramillas medium', serif;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1.5rem;
+                height: 80px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                top: 0;
+            }
+
+            .nav-left,
+            .nav-link {
+                display: none;
+            }
+
+            .nav-center {
+                display: block;
+                order: 0;
+            }
+
+            .nav-center img {
+                display: block;
+                height: 45px;
+                width: auto;
+            }
+
+            .hamburger {
+                display: flex;
+                order: 1;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(4px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                transform: translateY(-4px) rotate(-45deg);
+            }
+        }
+
+        img {
+            vertical-align: middle;
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'TT Ramillas medium', serif;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Gallery Header */
+        .gallery-header {
+            text-align: center;
+            padding: 180px 0 50px;
+        }
+
+        .gallery-header h1 {
+            font-family: 'TT Ramillas medium', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 500;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .gallery-header h1:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.4;
+        }
+
+        .gallery-header p {
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: var(--accent);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 25px auto 0;
+            padding: 0 15px;
+        }
+
+        /* ===== TRUE MASONRY GRID USING CSS MULTI-COLUMN ===== */
+        /* This creates a proper Pinterest-style masonry layout with natural gaps */
+        .masonry-grid {
+            column-count: 4;
+            column-gap: 24px;
+            padding-bottom: 80px;
+        }
+
+        /* Masonry items - each breaks naturally between columns */
+        .masonry-item {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            background-color: #f5f0e4;
+        }
+
+        /* Images fill container with proper aspect ratios */
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        /* Hover effect */
+        .masonry-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Responsive column counts */
+        @media (max-width: 1200px) {
+            .masonry-grid {
+                column-count: 3;
+                column-gap: 22px;
+            }
+            .masonry-item {
+                margin-bottom: 22px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .masonry-grid {
+                column-count: 2;
+                column-gap: 20px;
+            }
+            .masonry-item {
+                margin-bottom: 20px;
+            }
+            .gallery-header {
+                padding: 160px 0 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .masonry-grid {
+                column-count: 1;
+                column-gap: 0;
+                max-width: 450px;
+                margin: 0 auto;
+            }
+            .masonry-item {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-header h1 {
+                font-size: 2.2rem;
+            }
+            .gallery-header p {
+                font-size: 0.9rem;
+            }
+            .masonry-grid {
+                column-gap: 0;
+            }
+            .masonry-item {
+                margin-bottom: 18px;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-wrapper {
+            background-color: var(--secondary);
+            width: 100%;
+            margin-top: 80px;
+            padding: 60px 0 20px 0;
+        }
+
+        .footer-container {
+            margin: 0 auto;
+            padding: 0 20px;
+            color: var(--primary);
+        }
+
+        .top-section-wrapper {
+            display: flex;
+            align-items: stretch;
+            position: relative;
+        }
+
+        .side-block {
+            margin: 0 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex: 1;
+        }
+
+        .logo-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+        }
+
+        .logo-center img {
+            width: 200px;
+            height: auto;
+        }
+
+        .top-col {
+            padding: 20px 20px 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+            border-top: 1px solid #fef8e884;
+            border-bottom: 1px solid #fef8e884;
+        }
+
+        .inner-border {
+            border-right: 1px solid #fef8e884;
+        }
+
+        .label {
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: -.3px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .f-content {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: -25px;
+            color: var(--primary);
+        }
+
+        .nav-grid-wrapper {
+            display: flex;
+            padding-top: 80px;
+            padding-bottom: 180px;
+        }
+
+        .nav-side-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex: 1;
+        }
+
+        .nav-logo-gap {
+            width: 154px;
+        }
+
+        .nav-col {
+            text-align: center;
+        }
+
+        .nav-label {
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: white;
+        }
+
+        .hero-title-wrap {
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: "TT Ramillas medium", sans-serif;
+            font-size: 17vw;
+            text-transform: uppercase;
+            color: var(--primary);
+            line-height: 0.8;
+            letter-spacing: -0.01em;
+            font-weight: 500;
+            opacity: 0.6;
+            margin: 0;
+        }
+
+        .hero-subtitle {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            letter-spacing: 0.3em;
+            text-align: right;
+            margin-right: 20px;
+            font-weight: 500;
+            display: block;
+            opacity: 0.6;
+        }
+
+        .footer-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            color: var(--primary);
+        }
+
+        /* Footer Responsive */
+        @media (max-width: 1024px) {
+            .top-section-wrapper {
+                flex-wrap: wrap;
+            }
+
+            .logo-center {
+                width: 100%;
+                padding: 40px 0;
+                order: -1;
+            }
+
+            .nav-grid-wrapper {
+                flex-direction: column;
+                padding-bottom: 80px;
+            }
+
+            .nav-logo-gap {
+                display: none;
+            }
+
+            .nav-col {
+                padding: 20px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .side-block {
+                grid-template-columns: 1fr;
+                margin: 0 15px;
+            }
+
+            .top-col {
+                border-right: none;
+                min-height: 160px;
+            }
+
+            .inner-border {
+                border-right: none;
+            }
+
+            .hero-title {
+                font-size: 17vw;
+            }
+
+            .hero-subtitle {
+                font-size: 14px;
+                text-align: center;
+                margin-right: 0;
+            }
+
+            .footer-bar {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 20px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .masonry-item {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="nav-link"><span>Home</span><span>Home</span></a>
+            <a href="about.html" class="nav-link"><span>About</span><span>About</span></a>
+            <a href="menu.html" class="nav-link"><span>Menu</span><span>Menu</span></a>
+        </div>
+
+        <div class="nav-center">
+            <img src="img/logo.png" alt="Ashapura Garden Logo">
+        </div>
+
+        <div class="nav-right">
+            <a href="gallery.html" class="nav-link"><span>Gallery</span><span>Gallery</span></a>
+            <a href="events.html" class="nav-link"><span>Events</span><span>Events</span></a>
+            <a href="blog.html" class="nav-link"><span>Blog</span><span>Blog</span></a>
+            <a href="contact.html" class="nav-link"><span>Contact</span><span>Contact</span></a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Gallery Section - TRUE MASONRY GRID with mixed orientations -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-header reveal">
+                <h1>Ashapura Gallery</h1>
+                <p>Experience the artistry of our cuisine through these vibrant visuals. Each dish is crafted with passion and the finest ingredients.</p>
+            </div>
+
+            <!-- Masonry Grid using CSS Columns - Natural masonry flow with varied image heights -->
+            <div class="masonry-grid reveal">
+                <!-- Image 1 - Portrait style (taller) -->
+                <div class="masonry-item">
+                    <img src="img/Front restaurant.JPG" alt="Front View - Traditional Kathiyawadi Touch" loading="lazy">
+                </div>
+
+                <!-- Image 2 - Landscape (wide) -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1192.JPG" alt="Appetizer Platter - Indian Starters" loading="lazy">
+                </div>
+
+                <!-- Image 3 - Square/Medium -->
+                <div class="masonry-item">
+                    <img src="img/ganapati.JPG" alt="Lord Ganesha Entry - Positive Atmosphere" loading="lazy">
+                </div>
+
+                <!-- Image 4 - Wide Landscape -->
+                <div class="masonry-item">
+                    <img src="img/pexels-saveurssecretes-5410400.jpg" alt="Royal Thali - Complete Indian Meal" loading="lazy">
+                </div>
+
+                <!-- Image 5 - Portrait style -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1189.JPG" alt="Gulab Jamun - Traditional Indian Dessert" loading="lazy">
+                </div>
+
+                <!-- Image 6 - Landscape -->
+                <div class="masonry-item">
+                    <img src="img/pexels-meruyert-gonullu-6034066.jpg" alt="Dessert Platter - Indian Sweets Assortment" loading="lazy">
+                </div>
+
+                <!-- Image 7 - Tall portrait -->
+                <div class="masonry-item">
+                    <img src="img/pexels-anand-raj-222546-5775684.jpg" alt="Tandoori Platter - Grilled Delights" loading="lazy">
+                </div>
+
+                <!-- Image 8 - Wide landscape -->
+                <div class="masonry-item">
+                    <img src="img/pexels-kunal-lakhotia-781256899-36268523.jpg" alt="Beverage Selection - Lassi & Chai" loading="lazy">
+                </div>
+
+                <!-- Image 9 - Landscape -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1358.DNG" alt="Main Dining Hall - Elegant Restaurant Ambiance" loading="lazy">
+                </div>
+
+                <!-- Image 10 - Square -->
+                <div class="masonry-item">
+                    <img src="img/pexels-anand-raj-222546-5775684 (1).jpg" alt="Mango Lassi - Refreshing Yogurt Drink" loading="lazy">
+                </div>
+
+                <!-- Image 11 - Portrait -->
+                <div class="masonry-item">
+                    <img src="img/pexels-amol-nakve-2148578663-36631332.jpg" alt="Palak Paneer - Creamy Spinach Curry" loading="lazy">
+                </div>
+
+                <!-- Image 12 - Wide landscape -->
+                <div class="masonry-item">
+                    <img src="img/20557.jpg" alt="Private Dining - Intimate Restaurant Setting" loading="lazy">
+                </div>
+
+                <!-- Image 13 - Wide landscape -->
+                <div class="masonry-item">
+                    <img src="img/2148821544.jpg" alt="Chaat Counter - Fresh Indian Street Food" loading="lazy">
+                </div>
+
+                <!-- Image 14 - Tall portrait -->
+                <div class="masonry-item">
+                    <img src="img/2151246075.jpg" alt="Kulfi Selection - Traditional Indian Ice Cream" loading="lazy">
+                </div>
+
+                <!-- Image 15 - Landscape -->
+                <div class="masonry-item">
+                    <img src="img/pexels-amol-nakve-2148578663-36631332.jpg" alt="Restaurant Bar - Premium Beverages" loading="lazy">
+                </div>
+
+                <!-- Image 16 - Square -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1188.JPG" alt="Fresh Lime Soda - Refreshing Mocktail" loading="lazy">
+                </div>
+
+                <!-- Image 17 - Landscape -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1376.DNG" alt="Biryani Spread - Hyderabadi Dum Biryani" loading="lazy">
+                </div>
+
+                <!-- Image 18 - Portrait -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1375.DNG" alt="Street Style Chaat - Crispy Indian Snack" loading="lazy">
+                </div>
+
+                <!-- Image 19 - Wide landscape -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1367.DNG" alt="Indian Restaurant Ambiance - Warm Lighting" loading="lazy">
+                </div>
+
+                <!-- Image 20 - Tall portrait -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1363.DNG" alt="Indian Curry Platter - Rich Gravies" loading="lazy">
+                </div>
+
+                <!-- Image 21 - Square -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1206.JPG" alt="Butter Chicken - Creamy Tomato Curry" loading="lazy">
+                </div>
+
+                <!-- Image 22 - Landscape -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1173.JPG" alt="Restaurant Outdoor Seating - Garden View" loading="lazy">
+                </div>
+
+                <!-- Image 23 - Portrait -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1152.JPG" alt="Indian Bread Basket - Naan & Roti" loading="lazy">
+                </div>
+
+                <!-- Image 24 - Wide landscape -->
+                <div class="masonry-item">
+                    <img src="img/IMG_1164.JPG" alt="Restaurant Interior - Traditional Decor" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <div class="footer-wrapper">
+        <div class="footer-container">
+            <!-- Top Section -->
+            <div class="top-section-wrapper">
+                <div class="side-block">
+                    <div class="top-col inner-border">
+                        <span class="label">Ashapura</span>
+                        <div class="f-content">3415 SW College Rd<br>Ocala, FL 34474</div>
+                    </div>
+                    <div class="top-col">
+                        <span class="label">Hours</span>
+                        <div class="f-content">
+                            Tue-Fri 11 AM — 10 PM<br>
+                            Sat-Sun 12 PM — 10 PM<br>
+                            Mon (Closed)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="logo-center">
+                    <img src="img/logo.png" alt="Ashapura Garden Logo">
+                </div>
+
+                <div class="side-block">
+                    <div class="top-col inner-border">
+                        <span class="label">Contact</span>
+                        <div class="f-content">+1 (352) 873-8500<br>E-mail Us</div>
+                    </div>
+                    <div class="top-col">
+                        <span class="label">Newsletter</span>
+                        <div class="f-content">Get the latest updates.<br>Coming soon...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Grid -->
+            <div class="nav-grid-wrapper">
+                <div class="nav-side-block">
+                    <div class="nav-col">
+                        <span class="nav-label">Discover</span>
+                        <ul class="nav-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="catering.html">Catering</a></li>
+                            <li><a href="gift-cards.html">Gift Cards</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-col">
+                        <span class="nav-label">Legals</span>
+                        <ul class="nav-links">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms and Conditions</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nav-logo-gap"></div>
+
+                <div class="nav-side-block">
+                    <div class="nav-col">
+                        <span class="nav-label">Actions</span>
+                        <ul class="nav-links">
+                            <li><a href="menu.html">View Menu</a></li>
+                            <li><a href="#">Order Gift Card</a></li>
+                            <li><a href="#">Reserve a Table</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-col">
+                        <span class="nav-label">Socials</span>
+                        <ul class="nav-links">
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Facebook</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Title -->
+            <div class="hero-title-wrap">
+                <h1 class="hero-title">Ashapura</h1>
+                <span class="hero-subtitle">Garden restaurant</span>
+            </div>
+
+            <!-- Footer Bar -->
+            <div class="footer-bar">
+                <div>© 2026 Ashapura Garden Restaurant</div>
+                <div>All Rights Reserved</div>
+                <div>Made by <a href="#" style="color: inherit; text-decoration: none;">SIGMA CODE</a></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Reveal animations
+        const reveals = document.querySelectorAll('.reveal');
+        function revealOnScroll() {
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+</html>

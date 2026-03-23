@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Menu | Ashapura Garden</title>
+    <link rel="icon" href="data:,">
+    <meta
+        content="Explore the menu. From classic curries and tandoori specialties to vegetarian favorites, discover authentic Indian flavors crafted fresh daily."
+        name="description" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <style>
+        /* ================= CSS (UNCHANGED) ================= */
+        @font-face {
+            font-family: 'TT Ramillas regular';
+            src: url('fonts/ttramillas_regular.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TT Ramillas medium';
+            src: url('fonts/ttramillas_medium.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'satoshi';
+            src: url('fonts/Satoshi-Regular.woff2') format('woff2');
+            font-display: swap;
+        }
+
+
+        /* ---------- RESET / BASE ---------- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #FEF8E8;
+            --secondary: #603000;
+            --accent: #1C1C1C;
+            --dark: #2c2c2c;
+            /* ADD THIS */
+            --bradius: 160px;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            font-family: "satoshi", sans-serif;
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--primary);
+            color: #2c2c2c;
+            letter-spacing: -.01em;
+            font-family: "Satoshi", sans-serif;
+            font-size: clamp(14px, 1vw, 18px);
+            font-weight: 500;
+            line-height: 1.4;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        
+        /* --- Updated Navbar Styles --- */
+        .navbar {
+            position: fixed;
+            top: .3rem;
+            left: 0;
+            padding: 0 6.5rem;
+            width: 100vw;
+            z-index: 100000;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            gap: 2.2rem;
+        }
+
+        .nav-right {
+            justify-content: flex-end;
+        }
+
+        .nav-link {
+            position: relative;
+            height: 1.2em;
+            overflow: hidden;
+            font-family: 'satoshi', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s linear;
+        }
+
+        .nav-link span {
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nav-link span:last-child {
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+
+        .nav-link:hover span:first-child {
+            transform: translateY(-120%);
+        }
+
+        .nav-link:hover span:last-child {
+            transform: translateY(-100%);
+        }
+
+        /* Fixed the logo visibility here */
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-center img {
+            display: block;
+            width: auto;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        /* --- Desktop Defaults --- */
+        .nav-mobile-logo {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 10001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.3s;
+            z-index: 10001;
+        }
+
+        /* --- Mobile Menu Styles --- */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--primary);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            flex-direction: column;
+            pointer-events: none;
+            gap: 40px;
+        }
+
+        .mobile-menu-logo {
+            height: 80px;
+            width: auto;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.6s ease 0.3s;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .mobile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .mobile-links a {
+            font-family: 'TT Ramillas medium', serif;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        /* --- Responsive Switch --- */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1.5rem;
+                height: 80px;
+                display: flex;
+                /* Flexbox is easier for simple left-right split */
+                justify-content: space-between;
+                /* Pushes items to opposite ends */
+                align-items: center;
+                top: 0;
+            }
+
+            /* Hide desktop links */
+            .nav-left,
+            .nav-link {
+                display: none;
+            }
+
+            /* Ensure center container allows logo to sit left */
+            .nav-center {
+                display: block;
+                order: 0;
+                /* Keeps it first in the flex flow */
+            }
+
+            .nav-center img {
+                display: block;
+                height: 45px;
+                /* Slightly smaller for mobile headers */
+                width: auto;
+            }
+
+            .hamburger {
+                display: flex;
+                order: 1;
+                /* Keeps it on the right */
+            }
+
+            /* Hamburger Animation to 'X' */
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(4px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                transform: translateY(-4px) rotate(-45deg);
+            }
+        }
+
+
+        img {
+            vertical-align: middle;
+            max-width: 100%;
+            display: inline-block;
+        }
+
+        a {
+            color: #2c2c2c;
+            font-size: 1.05em;
+            text-decoration: none;
+        }
+
+        h1 {
+            letter-spacing: -.04em;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: 'TT Ramillas regular', sans-serif;
+            font-size: clamp(3.2rem, 9.6vw, 8rem);
+            font-weight: 300;
+            line-height: .8;
+        }
+
+        /* ========== ULTRA SMOOTH WORD-BY-WORD ANIMATION ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+                transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth word animation */
+        .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(8px) scale(0.98);
+            animation: smoothWordReveal 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+            white-space: nowrap;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes smoothWordReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(8px) scale(0.98);
+                filter: blur(2px);
+            }
+
+            60% {
+                opacity: 0.9;
+                transform: translateY(-1px) scale(1.01);
+                filter: blur(0);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        /* Circle items staggered animation */
+        .reveal.active .circle-item {
+            animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .reveal.active .circle-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .reveal.active .circle-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .reveal.active .circle-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .reveal.active .circle-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .reveal.active .circle-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .reveal.active .circle-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------- HERO SECTION (MENU) ---------- */
+        .wrapper_hero.special_menu {
+            padding: clamp(6em, 12vw, 12em) 28px 20px;
+        }
+
+        .hero_headline {
+            display: flex;
+            flex-flow: column;
+            margin-top: clamp(2em, 5vw, 3em);
+            grid-column-gap: 6px;
+            grid-row-gap: 6px;
+        }
+
+        .flex_heading.menu_special {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            grid-column-gap: clamp(8px, 2vw, 12px);
+            grid-row-gap: clamp(8px, 2vw, 12px);
+            align-items: center;
+        }
+
+        .flex_heading.menu_special>div:first-child {
+            text-align: right;
+        }
+
+        .flex_heading.menu_special>div:last-child {
+            text-align: left;
+        }
+
+        .caption_heading.dark {
+            color: var(--dark);
+            text-transform: uppercase;
+            font-size: clamp(0.75rem, 0.85vw, 1rem);
+            letter-spacing: 1px;
+        }
+
+        .h1_hero.like_home.dark {
+            color: var(--dark);
+            font-size: clamp(3rem, 6.6vw, 6.6rem);
+            margin: 0 auto;
+        }
+
+        /* ---------- SPACING EQUAL TO TOP ---------- */
+        .quote_menu_box {
+            margin-top: clamp(60px, 12vw, 140px);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quote_menu {
+            text-align: center;
+            letter-spacing: -.02em;
+            padding-top: 50px;
+            padding-bottom: 8px;
+            font-family: 'TT Ramillas regular', sans-serif;
+            font-size: clamp(1rem, 1.8vw, 1.4rem);
+            /* Font size kam kiya */
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .fullsize_image_menu {
+            width: 100vw;
+            height: clamp(40vh, 70vh, 80vh);
+            overflow: hidden;
+        }
+
+        .fullsize_image_menu img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ---------- FIXED NAVIGATION ---------- */
+        .fixed_navigation {
+            z-index: 999;
+            position: fixed;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            background-color: transparent;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .wrapper_navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            max-width: 1000px;
+            width: 90%;
+        }
+
+        .nav_main {
+            background-color: var(--primary);
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            padding: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 50%;
+            justify-content: space-around;
+            backdrop-filter: blur(10px);
+            background-color: rgba(212, 150, 83, 0.95);
+        }
+
+        .link_box {
+            display: inline-block;
+            padding: 8px 16px;
+            font-family: 'TT Ramillas regular', sans-serif;
+            font-size: clamp(0.75rem, 0.85vw, 0.95rem);
+            font-weight: 500;
+            transition: all .3s ease;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+            flex: 1;
+            white-space: nowrap;
+        }
+
+        .link_box:hover {
+            background-color: rgba(44, 44, 44, 0.15);
+            transform: scale(1.05);
+        }
+
+        .link_box.last {
+            border-right-style: none;
+        }
+
+        /* ---------- ADD PADDING TO BOTTOM OF MAIN CONTENT ---------- */
+        .wrapper_base.menu_wrapper {
+            padding: 52px 28px clamp(80px, 12vw, 120px);
+        }
+
+        /* ---------- MENU MAIN CONTENT ---------- */
+        .menu_overview {
+            width: min(62ch, calc(100% - 56px));
+            margin-left: 28px;
+            /* Left align - pehle jaisa */
+            margin-right: 0;
+            margin-bottom: 48px;
+        }
+
+        .lg_txt.menu_txt {
+            font-size: clamp(1.6rem, 2.1vw, 2.4rem);
+            font-family: 'TT Ramillas regular', sans-serif;
+            font-weight: 300;
+            line-height: 1.3;
+            letter-spacing: -.03em;
+            color: var(--dark);
+            text-align: left;
+            /* Left align */
+        }
+
+        .restaurant_menu {
+            display: flex;
+            flex-flow: column;
+            margin-top: 32px;
+            grid-column-gap: 32px;
+            grid-row-gap: 32px;
+        }
+
+        /* ---------- CREATE YOUR OWN COURSE - EXTRA BOTTOM SPACE ---------- */
+        .box_own_course {
+            padding-top: clamp(30px, 6vw, 62px);
+            padding-bottom: clamp(30px, 6vw, 62px);
+            margin-bottom: clamp(60px, 10vw, 120px);
+        }
+
+        .box_middle {
+            border: 1px solid rgba(44, 44, 44, 0.2);
+            border-bottom-style: none;
+            width: min(90%, 600px);
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(5px);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .headline_own_course {
+            text-align: center;
+            border-bottom: 1px solid rgba(44, 44, 44, 0.2);
+            padding: clamp(12px, 2vw, 16px) clamp(16px, 3vw, 24px);
+        }
+
+        .headline_category.box_spec {
+            font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+            font-family: 'TT Ramillas regular', sans-serif;
+            font-weight: 300;
+            letter-spacing: -.05em;
+        }
+
+        .headline_category.box_spec.price {
+            margin-top: 4px;
+            font-size: clamp(1.2rem, 1.6vw, 1.8rem);
+        }
+
+        .p_ch {
+            display: flex;
+            flex-flow: column;
+            width: min(51ch, 90%);
+            margin-top: 16px;
+            margin-left: auto;
+            margin-right: auto;
+            grid-column-gap: 12px;
+            grid-row-gap: 12px;
+        }
+
+        .base_p.dark {
+            color: var(--dark);
+            font-size: clamp(0.85rem, 0.9vw, 1rem);
+            line-height: 1.5;
+        }
+
+        .base_p.dark.spec_b {
+            font-weight: 700;
+        }
+
+        .middle_line_box {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(44, 44, 44, 0.2);
+            padding: clamp(15px, 2vw, 20px) clamp(16px, 3vw, 24px);
+            grid-column-gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .middle_line_box:hover {
+            background-color: rgba(212, 150, 83, 0.1);
+        }
+
+        .number_box {
+            margin-bottom: 6px;
+            font-family: 'TT Ramillas regular', sans-serif;
+            font-size: clamp(1rem, 1.2vw, 1.4rem);
+            font-weight: 300;
+        }
+
+        .special_drinks {
+            letter-spacing: -.03em;
+            font-family: 'TT Ramillas regular', sans-serif;
+            font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+            font-weight: 300;
+        }
+
+        .special_drinks.small {
+            font-size: clamp(0.9rem, 1.1vw, 1.3rem);
+        }
+
+        /* ---------- MENU SECTION LAYOUT - 50-50 SPLIT ---------- */
+        .rest_section {
+            margin-bottom: clamp(50px, 8vw, 80px);
+        }
+
+        .flex_menu {
+            display: flex;
+            gap: clamp(15px, 2vw, 20px);
+            flex-wrap: wrap;
+        }
+
+        .headline_menu {
+            width: calc(50% - 10px);
+            border-top: 1px solid rgba(44, 44, 44, 0.2);
+            border-bottom: 1px solid rgba(44, 44, 44, 0.2);
+            border-right: 1px solid rgba(44, 44, 44, 0.2);
+            border-radius: 0 20px 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .headline_menu:hover {
+            border-color: var(--primary);
+        }
+
+        .menu_list {
+            width: calc(50% - 10px);
+        }
+
+        .wrapper_headline_rest {
+            height: 100%;
+            padding: clamp(16px, 2vw, 20px) clamp(16px, 2.5vw, 28px) clamp(16px, 2.5vw, 24px);
+        }
+
+        .headline_rest {
+            display: flex;
+            flex-flow: column;
+            position: sticky;
+            top: 8em;
+            grid-column-gap: clamp(8px, 1vw, 12px);
+            grid-row-gap: clamp(8px, 1vw, 12px);
+        }
+
+        .headline_category {
+            letter-spacing: -.05em;
+            font-family: 'TT Ramillas regular', sans-serif;
+            font-size: clamp(2.2rem, 3.8vw, 4.2rem);
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        /* ---------- CIRCLE IMAGE GRID - BLACK BORDER ---------- */
+        .circle-grid {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(20px, 3vw, 30px);
+            width: 100%;
+        }
+
+        .circle-row {
+            display: flex;
+            justify-content: space-around;
+            gap: clamp(15px, 2.5vw, 30px);
+            flex-wrap: wrap;
+        }
+
+        .circle-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1 1 160px;
+            max-width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .circle-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .circle-image {
+            width: clamp(140px, 18vw, 200px);
+            height: clamp(140px, 18vw, 200px);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--dark);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+
+        .circle-image:hover {
+            transform: scale(1.08) rotate(3deg);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(212, 150, 83, 0.3);
+        }
+
+        .circle-title {
+            font-family: 'TT Ramillas regular', sans-serif;
+            font-size: clamp(1rem, 1.2vw, 1.3rem);
+            font-weight: 500;
+            margin-top: 12px;
+            color: var(--dark);
+        }
+
+        .circle-price {
+            font-size: clamp(0.9rem, 1vw, 1.1rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 4px;
+        }
+
+        .circle-desc {
+            font-size: clamp(0.75rem, 0.85vw, 0.9rem);
+            opacity: 0.8;
+            margin-top: 6px;
+            line-height: 1.4;
+            max-width: 180px;
+            padding: 0 5px;
+        }
+
+        /* ===== FOOTER - YOUR ORIGINAL FOOTER ===== */
+        .footer-wrapper {
+            background-color: var(--secondary);
+            width: 100%;
+            margin-top: 80px;
+            padding: 60px 0 20px 0;
+        }
+
+        .footer-container {
+            margin: 0 auto;
+            padding: 0 20px;
+            color: var(--primary);
+            font-family: "satoshi", sans-serif;
+        }
+
+        .top-section-wrapper {
+            display: flex;
+            align-items: stretch;
+            position: relative;
+        }
+
+        .side-block {
+            margin: 0 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex: 1;
+        }
+
+        .logo-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+        }
+
+        .logo-center img {
+            width: 200px;
+            height: auto;
+        }
+
+        .top-col {
+            padding: 20px 20px 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+            border-top: 1px solid #fef8e884;
+            border-bottom: 1px solid #fef8e884;
+        }
+
+        .inner-border {
+            border-right: 1px solid #fef8e884;
+        }
+
+        .label {
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: -.3px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .f-content {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: -25px;
+            color: var(--primary);
+        }
+
+        .nav-grid-wrapper {
+            display: flex;
+            padding-top: 80px;
+            padding-bottom: 180px;
+        }
+
+        .nav-side-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex: 1;
+        }
+
+        .nav-logo-gap {
+            width: 154px;
+        }
+
+        .nav-col {
+            text-align: center;
+        }
+
+        .nav-label {
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: white;
+        }
+
+        .hero-title-wrap {
+            padding: 20px 40px 40px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: "TT Ramillas medium", sans-serif;
+            font-size: 17vw;
+            text-transform: uppercase;
+            color: var(--primary);
+            line-height: 0.8;
+            letter-spacing: -0.01em;
+            font-weight: 500;
+            opacity: 0.6;
+            margin: 0;
+        }
+
+        .hero-subtitle {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            letter-spacing: 0.3em;
+            text-align: right;
+            margin-right: 20px;
+            font-weight: 500;
+            display: block;
+            opacity: 0.6;
+        }
+
+        .footer-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            color: var(--primary);
+        }
+
+        @media (max-width: 1024px) {
+            .top-section-wrapper {
+                flex-wrap: wrap;
+            }
+
+            .logo-center {
+                width: 100%;
+                padding: 40px 0;
+                order: -1;
+            }
+
+            .nav-grid-wrapper {
+                flex-direction: column;
+                padding-bottom: 80px;
+            }
+
+            .nav-logo-gap {
+                display: none;
+            }
+
+            .nav-col {
+                padding: 20px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .side-block {
+                grid-template-columns: 1fr;
+                margin: 0 15px;
+            }
+
+            .top-col {
+                border-right: none;
+                border-bottom: 1px solid #fef8e884;
+                min-height: 160px;
+            }
+
+            .inner-border {
+                border-right: none;
+            }
+
+            .f-content {
+                margin-bottom: 0;
+            }
+
+            .hero-title {
+                font-size: 17vw;
+            }
+
+            .hero-subtitle {
+                font-size: 14px;
+                text-align: center;
+                margin-right: 0;
+            }
+
+            .footer-bar {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 14vw;
+            }
+            
+            .logo-center img {
+                width: 150px;
+            }
+        }
+
+        /* ---------- RESPONSIVE - PERFECTLY OPTIMIZED ---------- */
+        @media screen and (max-width: 1200px) {
+            body {
+                font-size: clamp(13px, 1.2vw, 16px);
+            }
+
+            .headline_category {
+                font-size: clamp(2rem, 3.5vw, 3.8rem);
+            }
+        }
+
+        @media screen and (max-width: 991px) {
+            body {
+                font-size: clamp(13px, 1.5vw, 15px);
+            }
+
+            .wrapper_hero.special_menu {
+                padding: 10em 20px 20px;
+            }
+
+            .wrapper_base.menu_wrapper {
+                padding-top: 32px;
+            }
+
+            .h1_hero.like_home.dark {
+                font-size: clamp(2.8rem, 7.6vw, 6rem);
+            }
+
+            .menu_overview {
+                width: calc(100% - 40px);
+                margin-left: 20px;
+            }
+
+            .box_middle {
+                width: 85%;
+            }
+
+            .headline_category {
+                font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+            }
+
+            .flex_menu {
+                gap: 15px;
+            }
+
+            .nav_main {
+                width: 70%;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            body {
+                font-size: clamp(14px, 2vw, 16px);
+            }
+
+            .wrapper_hero.special_menu {
+                padding: 8em 16px 16px;
+            }
+
+            .h1_hero.like_home.dark {
+                font-size: clamp(2.5rem, 10vw, 5rem);
+            }
+
+            .flex_heading.menu_special {
+                flex-flow: column;
+                display: flex;
+                grid-template-columns: none;
+                gap: 10px;
+            }
+
+            .flex_heading.menu_special>div:first-child,
+            .flex_heading.menu_special>div:last-child {
+                text-align: center;
+            }
+
+            .caption_heading.dark {
+                font-size: clamp(0.9rem, 2vw, 1.2rem);
+            }
+
+            .quote_menu {
+                font-size: clamp(1rem, 2vw, 1.3rem);
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .fullsize_image_menu {
+                height: 45vh;
+            }
+
+            .menu_overview {
+                width: calc(100% - 32px);
+                margin-left: 16px;
+            }
+
+            .flex_menu {
+                flex-flow: column;
+                gap: 0;
+            }
+
+            .headline_menu,
+            .menu_list {
+                width: 100%;
+            }
+
+            .headline_menu {
+                border-right-style: none;
+                margin-bottom: 20px;
+                border-radius: 20px;
+            }
+
+            .wrapper_headline_rest {
+                padding: 20px 16px;
+            }
+
+            .headline_category {
+                font-size: clamp(2rem, 4.5vw, 3.5rem);
+            }
+
+            .headline_rest {
+                position: static;
+            }
+
+            .box_middle {
+                width: 95%;
+            }
+
+            .wrapper_base.menu_wrapper {
+                padding-bottom: 100px;
+            }
+
+            .link_box {
+                padding: 6px 10px;
+                font-size: clamp(0.8rem, 1.8vw, 1.2rem);
+            }
+
+            .circle-item {
+                max-width: 200px;
+            }
+
+            .nav_main {
+                width: 85%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                font-size: clamp(15px, 3.8vw, 18px);
+            }
+
+            .wrapper_hero.special_menu {
+                padding: 6em 16px 16px;
+            }
+
+            .h1_hero.like_home.dark {
+                font-size: clamp(2.2rem, 12vw, 4rem);
+            }
+
+            .hero_headline {
+                margin-top: 1.5em;
+            }
+
+            .caption_heading.dark {
+                font-size: clamp(0.8rem, 3.6vw, 1.2rem);
+            }
+
+            .quote_menu {
+                font-size: clamp(1rem, 3.5vw, 1.3rem);
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .quote_menu_box {
+                margin-top: 40px;
+            }
+
+            .fullsize_image_menu {
+                height: 35vh;
+            }
+
+            .wrapper_base.menu_wrapper {
+                padding: 20px 16px 80px;
+            }
+
+            .menu_overview {
+                width: calc(100% - 32px);
+                margin-left: 16px;
+            }
+
+            .lg_txt.menu_txt {
+                font-size: clamp(1.6rem, 4.7vw, 2.2rem);
+            }
+
+            .box_middle {
+                width: 100%;
+            }
+
+            .headline_category.box_spec {
+                font-size: clamp(1.8rem, 6vw, 2.5rem);
+            }
+
+            .headline_category.box_spec.price {
+                font-size: clamp(1.4rem, 5vw, 2rem);
+            }
+
+            .p_ch {
+                width: 100%;
+            }
+
+            .base_p.dark {
+                font-size: clamp(0.9rem, 3.6vw, 1.1rem);
+            }
+
+            .middle_line_box {
+                padding: 15px 12px;
+            }
+
+            .number_box {
+                font-size: clamp(1.2rem, 5vw, 1.8rem);
+            }
+
+            .special_drinks {
+                font-size: clamp(1.2rem, 5vw, 1.8rem);
+            }
+
+            .special_drinks.small {
+                font-size: clamp(1rem, 4vw, 1.4rem);
+            }
+
+            .headline_category {
+                font-size: clamp(1.8rem, 7vw, 2.8rem);
+            }
+
+            .circle-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .circle-item {
+                max-width: 260px;
+            }
+
+            .circle-image {
+                width: clamp(160px, 50vw, 200px);
+                height: clamp(160px, 50vw, 200px);
+            }
+
+            .circle-title {
+                font-size: clamp(1.1rem, 4vw, 1.4rem);
+            }
+
+            .circle-price {
+                font-size: clamp(1rem, 3.8vw, 1.3rem);
+            }
+
+            .circle-desc {
+                font-size: clamp(0.85rem, 3.5vw, 1rem);
+                max-width: 240px;
+            }
+
+            .wrapper_navigation {
+                width: 95%;
+            }
+
+            .link_box {
+                padding: 5px 8px;
+                font-size: clamp(0.7rem, 3.2vw, 0.9rem);
+            }
+
+            .nav_main {
+                width: 100%;
+            }
+        }
+
+        /* ---------- EXTRA SMALL DEVICES ---------- */
+        @media screen and (max-width: 360px) {
+            .circle-image {
+                width: 140px;
+                height: 140px;
+            }
+
+            .circle-item {
+                max-width: 220px;
+            }
+
+            .link_box {
+                padding: 4px 6px;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* ---------- UTILITY ---------- */
+        .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet" />
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        ::selection {
+            background-color: #d49653;
+            color: #2c2c2c;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="nav-link"><span>Home</span><span>Home</span></a>
+            <a href="about.html" class="nav-link"><span>About</span><span>About</span></a>
+            <a href="menu.html" class="nav-link"><span>Menu</span><span>Menu</span></a>
+        </div>
+
+        <div class="nav-center">
+            <img src="img/logo.png" alt="Aashapura Logo">
+        </div>
+
+        <div class="nav-right">
+            <a href="gallery.html" class="nav-link"><span>Gallery</span><span>Gallery</span></a>
+            <a href="events.html" class="nav-link"><span>Events</span><span>Events</span></a>
+            <a href="blog.html" class="nav-link"><span>Blog</span><span>Blog</span></a>
+            <a href="contact.html" class="nav-link"><span>Contact</span><span>Contact</span></a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+
+    <!-- ========== HERO SECTION ========== -->
+    <section id="diff-hero">
+        <div class="wrapper_hero special_menu reveal">
+            <div class="hero_headline">
+                <div class="flex_heading menu_special">
+                    <div>
+                        <div class="caption_heading dark" id="spicesText"></div>
+                    </div>
+                    <h1 class="h1_hero like_home dark" id="menuText"></h1>
+                    <div>
+                        <div class="caption_heading dark" id="discoveriesText"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="quote_menu_box">
+                <div class="quote_menu" id="quoteText"></div>
+            </div>
+        </div>
+        <div class="fullsize_image_menu reveal">
+            <img src="https://cdn.prod.website-files.com/68a25157e0edb92947ffe4a2/68b501d6ea2fda5405398ae8_Menu%20Image-min.avif"
+                loading="lazy" alt="Menu Image" class="image" />
+        </div>
+    </section>
+
+    <!-- ========== MAIN MENU CONTENT ========== -->
+    <div class="wrapper_base menu_wrapper">
+        <div class="menu_overview reveal">
+            <div class="lg_txt menu_txt" id="overviewText"></div>
+        </div>
+
+        <div class="restaurant_menu">
+            <!-- CREATE YOUR OWN COURSE -->
+            <div class="section_own_course reveal">
+                <div class="box_own_course">
+                    <div class="box_middle">
+                        <div class="wrapper_box">
+                            <div class="headline_own_course">
+                                <div class="headline_category box_spec" id="ownCourseTitle"></div>
+                                <div class="p_ch">
+                                    <div class="base_p dark" id="ownCourseDesc"></div>
+                                </div>
+                            </div>
+                            <div class="middle_line_box">
+                                <div class="number_box" id="num1"></div>
+                                <div class="special_drinks" id="gujText"></div>
+                            </div>
+                            <div class="middle_line_box">
+                                <div class="number_box" id="num2"></div>
+                                <div class="special_drinks" id="katiText"></div>
+                                <div class="special_drinks small" id="ringanText"></div>
+                            </div>
+                            <div class="middle_line_box">
+                                <div class="number_box" id="num3"></div>
+                                <div class="special_drinks" id="punjabiText"></div>
+                            </div>
+                            <div class="middle_line_box">
+                                <div class="number_box" id="num4"></div>
+                                <div class="special_drinks" id="chineseText"></div>
+                            </div>
+                            <div class="middle_line_box">
+                                <div class="number_box" id="num5"></div>
+                                <div class="special_drinks" id="fastText"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KATHIYAWADI SECTION -->
+            <section id="kathiyawadi" class="rest_section reveal">
+                <div class="flex_menu">
+                    <div class="headline_menu">
+                        <div class="wrapper_headline_rest">
+                            <div class="headline_rest">
+                                <div class="headline_category" id="kathiyawadiTitle"></div>
+                                <div class="base_p dark" id="kathiyawadiDesc"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu_list">
+                        <div class="circle-grid">
+                            <div class="circle-row">
+                                <div class="circle-item">
+                                    <img src="img/d1.jpg" alt="Sev Tameta" class="circle-image">
+                                    <div class="circle-title">Sev Tameta</div>
+                                    <div class="circle-price">$12.99</div>
+                                    <div class="circle-desc">Crunchy sev in spicy tangy tomato gravy.</div>
+                                </div>
+                                <div class="circle-item">
+                                    <img src="img/d2.jpg" alt="Lasaniya Batata" class="circle-image">
+                                    <div class="circle-title">Lasaniya Batata</div>
+                                    <div class="circle-price">$11.99</div>
+                                    <div class="circle-desc">Garlicky baby potatoes in traditional spices.</div>
+                                </div>
+                            </div>
+                            <div class="circle-row">
+                                <div class="circle-item">
+                                    <img src="img/d3.jpg" alt="Ringan No Olo" class="circle-image">
+                                    <div class="circle-title">Ringan No Olo</div>
+                                    <div class="circle-price">$13.99</div>
+                                    <div class="circle-desc">Smoky eggplant curry with peanuts and sesame.</div>
+                                </div>
+                                <div class="circle-item">
+                                    <img src="img/d4.jpg" alt="Kathiyawadi Dal" class="circle-image">
+                                    <div class="circle-title">Kathiyawadi Dal</div>
+                                    <div class="circle-price">$10.99</div>
+                                    <div class="circle-desc">Spicy lentils with garlic and red chilies.</div>
+                                </div>
+                            </div>
+                            <div class="circle-row" style="justify-content: center;">
+                                <div class="circle-item">
+                                    <img src="img/d1.jpg" alt="Methi Thepla" class="circle-image">
+                                    <div class="circle-title">Methi Thepla</div>
+                                    <div class="circle-price">$8.99</div>
+                                    <div class="circle-desc">Fenugreek flatbread - perfect with curry.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GUJARATI SECTION -->
+            <section id="gujarati" class="rest_section reveal">
+                <div class="flex_menu">
+                    <div class="headline_menu">
+                        <div class="wrapper_headline_rest">
+                            <div class="headline_rest">
+                                <div class="headline_category" id="gujaratiTitle"></div>
+                                <div class="base_p dark" id="gujaratiDesc"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu_list">
+                        <div class="circle-grid">
+                            <div class="circle-row">
+                                <div class="circle-item">
+                                    <img src="img/d1.jpg" alt="Undhiyu" class="circle-image">
+                                    <div class="circle-title">Undhiyu</div>
+                                    <div class="circle-price">$16.99</div>
+                                    <div class="circle-desc">Mixed winter vegetables in aromatic spices.</div>
+                                </div>
+                                <div class="circle-item">
+                                    <img src="img/d2.jpg" alt="Khandvi" class="circle-image">
+                                    <div class="circle-title">Khandvi</div>
+                                    <div class="circle-price">$9.99</div>
+                                    <div class="circle-desc">Soft gram flour rolls with mustard seeds.</div>
+                                </div>
+                            </div>
+                            <div class="circle-row">
+                                <div class="circle-item">
+                                    <img src="img/d3.jpg" alt="Dhokla" class="circle-image">
+                                    <div class="circle-title">Dhokla</div>
+                                    <div class="circle-price">$8.99</div>
+                                    <div class="circle-desc">Steamed fermented rice and chickpea snack.</div>
+                                </div>
+                                <div class="circle-item">
+                                    <img src="img/d4.jpg" alt="Gujarati Dal" class="circle-image">
+                                    <div class="circle-title">Gujarati Dal</div>
+                                    <div class="circle-price">$11.99</div>
+                                    <div class="circle-desc">Sweet-sour lentils with peanuts and jaggery.</div>
+                                </div>
+                            </div>
+                            <div class="circle-row" style="justify-content: center;">
+                                <div class="circle-item">
+                                    <img src="img/d1.jpg" alt="Mohanthal" class="circle-image">
+                                    <div class="circle-title">Mohanthal</div>
+                                    <div class="circle-price">$7.99</div>
+                                    <div class="circle-desc">Traditional Gujarati fudge with gram flour.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PUNJABI SECTION -->
+            <section id="punjabi" class="rest_section reveal">
+                <div class="flex_menu">
+                    <div class="headline_menu">
+                        <div class="wrapper_headline_rest">
+                            <div class="headline_rest">
+                                <div class="headline_category" id="punjabiTitle"></div>
+                                <div class="base_p dark" id="punjabiDesc"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu_list">
+                        <div class="circle-grid">
+                            <div class="circle-row">
+                                <div class="circle-item">
+                                    <img src="img/d1.jpg" alt="Butter Chicken" class="circle-image">
+                                    <div class="circle-title">Butter Chicken</div>
+                                    <div class="circle-price">$18.99</div>
+                                    <div class="circle-desc">Tandoori chicken in creamy tomato gravy.</div>
+                                </div>
+                                <div class="circle-item">
+                                    <img src="img/d2.jpg" alt="Sarson Ka Saag" class="circle-image">
+                                    <div class="circle-title">Sarson Ka Saag</div>
+                                    <div class="circle-price">$15.99</div>
+                                    <div class="circle-desc">Mustard greens with makki di roti.</div>
+                                </div>
+                            </div>
+                            <div class="circle-row">
+                                <div class="circle-item">
+                                    <img src="img/d3.jpg" alt="Dal Makhani" class="circle-image">
+                                    <div class="circle-title">Dal Makhani</div>
+                                    <div class="circle-price">$14.99</div>
+                                    <div class="circle-desc">Black lentils with butter and cream.</div>
+                                </div>
+                                <div class="circle-item">
+                                    <img src="img/d4.jpg" alt="Paneer Tikka Masala" class="circle-image">
+                                    <div class="circle-title">Paneer Tikka Masala</div>
+                                    <div class="circle-price">$16.99</div>
+                                    <div class="circle-desc">Grilled cottage cheese in onion-tomato gravy.</div>
+                                </div>
+                            </div>
+                            <div class="circle-row" style="justify-content: center;">
+                                <div class="circle-item">
+                                    <img src="img/d1.jpg" alt="Chole Bhature" class="circle-image">
+                                    <div class="circle-title">Chole Bhature</div>
+                                    <div class="circle-price">$13.99</div>
+                                    <div class="circle-desc">Spicy chickpea curry with fried bread.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CHINESE SECTION -->
+            <section id="chinese" class="rest_section reveal">
+                <div class="flex_menu">
+                    <div class="headline_menu">
+                        <div class="wrapper_headline_rest">
+                            <div class="headline_rest">
+                                <div class="headline_category" id="chineseTitle"></div>
+                                <div class="base_p dark" id="chineseDesc"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu_list">
+                        <div class="circle-grid">
+                            <div class="circle-row">
+                                <div class="circle-item">
+                                    <img src="img/d1.jpg" alt="Gobi Manchurian" class="circle-image">
+                                    <div class="circle-title">Gobi Manchurian</div>
+                                    <div class="circle-price">$14.99</div>
+                                    <div class="circle-desc">Crispy cauliflower in spicy garlic-soy sauce.</div>
+                                </div>
+                                <div class="circle-item">
+                                    <img src="img/d2.jpg" alt="Chilli Chicken" class="circle-image">
+                                    <div class="circle-title">Chilli Chicken</div>
+                                    <div class="circle-price">$16.99</div>
+                                    <div class="circle-desc">Boneless chicken in hot garlic sauce.</div>
+                                </div>
+                            </div>
+                            <div class="circle-row">
+                                <div class="circle-item">
+                                    <img src="img/d3.jpg" alt="Hakka Noodles" class="circle-image">
+                                    <div class="circle-title">Hakka Noodles</div>
+                                    <div class="circle-price">$12.99</div>
+                                    <div class="circle-desc">Stir-fried noodles with vegetables.</div>
+                                </div>
+                                <div class="circle-item">
+                                    <img src="img/d4.jpg" alt="Veg Fried Rice" class="circle-image">
+                                    <div class="circle-title">Veg Fried Rice</div>
+                                    <div class="circle-price">$11.99</div>
+                                    <div class="circle-desc">Basmati rice wok-tossed with veggies.</div>
+                                </div>
+                            </div>
+                            <div class="circle-row" style="justify-content: center;">
+                                <div class="circle-item">
+                                    <img src="img/d1.jpg" alt="Honey Chilli Potato" class="circle-image">
+                                    <div class="circle-title">Honey Chilli Potato</div>
+                                    <div class="circle-price">$12.99</div>
+                                    <div class="circle-desc">Crispy potato with honey and sesame.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAST FOOD SECTION -->
+            <section id="fast-food" class="rest_section reveal">
+                <div class="flex_menu">
+                    <div class="headline_menu">
+                        <div class="wrapper_headline_rest">
+                            <div class="headline_rest">
+                                <div class="headline_category" id="fastTitle"></div>
+                                <div class="base_p dark" id="fastDesc"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu_list">
+                        <div class="circle-grid">
+                            <div class="circle-row">
+                                <div class="circle-item">
+                                    <img src="img/d1.jpg" alt="Vada Pav" class="circle-image">
+                                    <div class="circle-title">Vada Pav</div>
+                                    <div class="circle-price">$6.99</div>
+                                    <div class="circle-desc">Spicy potato fritter in bun with chutneys.</div>
+                                </div>
+                                <div class="circle-item">
+                                    <img src="img/d2.jpg" alt="Pav Bhaji" class="circle-image">
+                                    <div class="circle-title">Pav Bhaji</div>
+                                    <div class="circle-price">$10.99</div>
+                                    <div class="circle-desc">Mixed vegetable mash with buttered pav.</div>
+                                </div>
+                            </div>
+                            <div class="circle-row">
+                                <div class="circle-item">
+                                    <img src="img/d3.jpg" alt="Samosa Chaat" class="circle-image">
+                                    <div class="circle-title">Samosa Chaat</div>
+                                    <div class="circle-price">$8.99</div>
+                                    <div class="circle-desc">Samosa with chutney, yogurt, and spices.</div>
+                                </div>
+                                <div class="circle-item">
+                                    <img src="img/d4.jpg" alt="Frankie Roll" class="circle-image">
+                                    <div class="circle-title">Frankie Roll</div>
+                                    <div class="circle-price">$7.99</div>
+                                    <div class="circle-desc">Spiced potato/paneer wrapped in roti.</div>
+                                </div>
+                            </div>
+                            <div class="circle-row" style="justify-content: center;">
+                                <div class="circle-item">
+                                    <img src="img/d1.jpg" alt="Dabeli" class="circle-image">
+                                    <div class="circle-title">Dabeli</div>
+                                    <div class="circle-price">$6.99</div>
+                                    <div class="circle-desc">Sweet-spicy potato in bun with peanuts.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ========== FIXED NAVIGATION ========== -->
+    <div class="fixed_navigation">
+        <div class="wrapper_navigation">
+            <div class="nav_main">
+                <a href="#kathiyawadi" class="link_box">Kathiyawadi</a>
+                <a href="#gujarati" class="link_box">Gujarati</a>
+                <a href="#punjabi" class="link_box">Punjabi</a>
+                <a href="#chinese" class="link_box">Chinese</a>
+                <a href="#fast-food" class="link_box last">Fast Food</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== FOOTER - YOUR ORIGINAL FOOTER ========== -->
+    <div class="footer-wrapper">
+        <div class="footer-container">
+            <!-- Top Section -->
+            <div class="top-section-wrapper">
+                <div class="side-block">
+                    <div class="top-col inner-border">
+                        <span class="label">Ashapura</span>
+                        <div class="f-content">3415 SW College Rd<br>Ocala, FL 34474</div>
+                    </div>
+                    <div class="top-col">
+                        <span class="label">Hours</span>
+                        <div class="f-content">
+                            Tue-Fri 11 AM — 10 PM<br>
+                            Sat-Sun 12 PM — 10 PM<br>
+                            Mon (Closed)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="logo-center">
+                    <img src="img/logo.png" alt="Ashapura Garden Logo">
+                </div>
+
+                <div class="side-block">
+                    <div class="top-col inner-border">
+                        <span class="label">Contact</span>
+                        <div class="f-content">+1 (352) 873-8500<br>E-mail Us</div>
+                    </div>
+                    <div class="top-col">
+                        <span class="label">Newsletter</span>
+                        <div class="f-content">Get the latest updates.<br>Coming soon...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Grid -->
+            <div class="nav-grid-wrapper">
+                <div class="nav-side-block">
+                    <div class="nav-col">
+                        <span class="nav-label">Discover</span>
+                        <ul class="nav-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="catering.html">Catering</a></li>
+                            <li><a href="gift-cards.html">Gift Cards</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-col">
+                        <span class="nav-label">Legals</span>
+                        <ul class="nav-links">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms and Conditions</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nav-logo-gap"></div>
+
+                <div class="nav-side-block">
+                    <div class="nav-col">
+                        <span class="nav-label">Actions</span>
+                        <ul class="nav-links">
+                            <li><a href="menu.html">View Menu</a></li>
+                            <li><a href="#">Order Gift Card</a></li>
+                            <li><a href="#">Reserve a Table</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-col">
+                        <span class="nav-label">Socials</span>
+                        <ul class="nav-links">
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Facebook</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Title -->
+            <div class="hero-title-wrap">
+                <h1 class="hero-title">Ashapura</h1>
+                <span class="hero-subtitle">Garden restaurant</span>
+            </div>
+
+            <!-- Footer Bar -->
+            <div class="footer-bar">
+                <div>© 2026 Ashapura Garden Restaurant</div>
+                <div>All Rights Reserved</div>
+                <div>Made by <a href="#" style="color: inherit; text-decoration: none;">SIGMA CODE</a></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script>
+        
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+
+            // Optional: Toggle class on navbar to hide the header logo when menu is open
+            document.querySelector('.navbar').classList.toggle('menu-open');
+
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+
+        // Close menu when clicking a link
+        const mobileLinks = document.querySelectorAll('.mobile-links a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+
+        (function () {
+    "use strict";
+
+    // 1. REGISTER GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 2. INITIALIZE LENIS (Main Page Style)
+    const lenis = new Lenis({
+        duration: 1.2,
+        lerp: 0.1,
+        smoothWheel: true
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Sync ScrollTrigger with Lenis
+    lenis.on('scroll', ScrollTrigger.update);
+
+    // 3. TEXT CONTENT & INJECTION
+    const textContent = {
+        spices: "Spices of Kathiyawad",
+        menu: "menu",
+        discoveries: "New Discoveries",
+        quote: "Spices of heritage. Flavors of nature. The soul of Ashapura.",
+        overview: "A symphony of tradition and nature, crafted with care at Ashapura Garden. Every dish reflects our heritage—from the rustic spices of Saurashtra to the sweet lingering flavors of Gujarat.",
+        ownCourse: "our own course",
+        ownCourseDesc: "Craft your signature meal at Ashapura Garden. Choose your favorite appetizer, main entrée, and dessert.",
+        num1: "I.", num2: "II.", num3: "III.", num4: "IV.", num5: "V.",
+        guj: "Gujarati",
+        kati: "Katiyawadi",
+        ringan: "Ringan No Oro: Baigan ka bharta (smoky flavor)",
+        punjabi: "Punjabi",
+        chinese: "Chinese",
+        fast: "Fast food",
+        kathiyawadiTitle: "Kathiyawadi",
+        kathiyawadiDesc: "Savor the rustic essence of Saurashtra with spicy Sev Tameta and handmade Bajra Rotla.",
+        gujaratiTitle: "Gujarati",
+        gujaratiDesc: "Experience a blissful balance of sweet and salty flavors with authentic Undhiyu.",
+        punjabiTitle: "Punjabi",
+        punjabiDesc: "Indulge in rich, buttery delights featuring creamy Dal Makhani and Paneer Tikka.",
+        chineseTitle: "Chinese",
+        chineseDesc: "Experience the bold fusion of spicy Schezwan and wok-tossed Hakka noodles.",
+        fastTitle: "Fast Food",
+        fastDesc: "Relish the vibrant street flavors with spicy Vada Pav and tangy Dabeli."
+    };
+
+    function createWordSpans(text) {
+        return text.split(' ').map(word => `<span class="word">${word}</span>`).join(' ');
+    }
+
+    // Auto-inject into IDs
+    Object.keys(textContent).forEach(key => {
+        const target = document.getElementById(key) || document.getElementById(key + 'Text') || document.getElementById(key + 'Title') || document.getElementById(key + 'Desc');
+        if (target) target.innerHTML = createWordSpans(textContent[key]);
+    });
+
+    // 4. THE SMOOTH REVEAL ANIMATION
+    // We use GSAP batching for high performance
+    document.querySelectorAll('.reveal').forEach((el) => {
+        const words = el.querySelectorAll('.word');
+        
+        gsap.set(el, { opacity: 1 }); // Ensure container is visible
+
+        gsap.from(words, {
+            scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            y: 40,
+            opacity: 0,
+            rotateX: -15,
+            duration: 1,
+            stagger: 0.02,
+            ease: "expo.out",
+            force3D: true // Force GPU acceleration for smoothness
+        });
+    });
+
+    // 5. SMOOTH ANCHOR LINKS
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) lenis.scrollTo(target);
+        });
+    });
+
+})();
+    </script>
+</body>
+
+</html>

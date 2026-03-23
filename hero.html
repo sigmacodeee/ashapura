@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Aashapura Garden Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tillana:wght@400;500;600;700;800&display=swap');
+  </style>
+
+  <style>
+    /* ================= FONT FACE ================= */
+    @font-face {
+      font-family: 'TT Ramillas regular';
+      src: url('fonts/ttramillas_regular.woff2') format('woff2');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'TT Ramillas medium';
+      src: url('fonts/ttramillas_medium.woff2') format('woff2');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'satoshi';
+      src: url('fonts/Satoshi-Regular.woff2') format('woff2');
+      font-display: swap;
+    }
+
+    /* ================= ROOT ================= */
+    :root {
+      --primary: #FEF8E8;
+      --secondary: #603000;
+      --accent: #1C1C1C;
+      --bradius: 160px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--primary);
+      font-family: 'TT Ramillas medium', serif;
+      color: var(--accent);
+      overflow-x: hidden;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      position: fixed;
+      top: 1.5rem;
+      left: 0;
+      width: 100%;
+      padding: 0 6.5rem;
+      z-index: 10000;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 2.2rem;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      position: relative;
+      height: 1.2em;
+      overflow: hidden;
+      font-family: 'satoshi', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      color: var(--secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link span {
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav-link span:last-child {
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+
+    .nav-link:hover span:first-child {
+      transform: translateY(-120%);
+    }
+
+    .nav-link:hover span:last-child {
+      transform: translateY(-100%);
+    }
+
+    /* ================= HERO LAYOUT ================= */
+
+    .page-center {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero {
+      height: 75vh;
+      width: 87vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      position: relative;
+    }
+
+    /* ================= CENTER WINDOW ================= */
+    .hero-center {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .window-wrapper {
+      position: relative;
+      width: 600px;
+      height: 760px;
+    }
+
+    .video-container {
+      position: absolute;
+      top: 7%;
+      left: 12%;
+      width: 76%;
+      height: 85%;
+      overflow: hidden;
+      border-radius: var(--bradius);
+      filter: blur(4px);
+      z-index: 0;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ================= GLASS ================= */
+    .glass-overlay {
+      position: absolute;
+      top: 6%;
+      left: 10%;
+      width: 80%;
+      height: 88%;
+      border-radius: var(--bradius);
+      z-index: 1;
+      background: linear-gradient(180deg,
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.5));
+      backdrop-filter: blur(1.5px) saturate(140%);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+        inset 0 -20px 40px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      pointer-events: none;
+    }
+
+    .glass-overlay::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: var(--bradius);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      opacity: 0.6;
+    }
+
+    .glass-title {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'TT Ramillas medium', serif;
+      font-size: 15px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #FEF8E8;
+      width: 100%;
+      font-weight: 500;
+      pointer-events: none;
+      filter: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    .aashapura {
+      color: #ffbb00;
+      padding: 0 5px;
+      font-size: 2rem;
+      font-family: 'Tillana', cursive;
+      font-weight: 500;
+    }
+
+    .window-frame {
+      position: absolute;
+      inset: 0;
+      background-color: #60300015;
+      border-radius: var(--bradius);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ================= LEFT ================= */
+    .hero-left {
+      grid-column: 1;
+      grid-row: 1;
+      z-index: 4;
+    }
+
+    .hero-left h1 {
+      font-size: 4.8rem;
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--secondary);
+      white-space: nowrap;
+      margin-right: -18vw;
+      margin-top: 7.5vh;
+    }
+
+
+
+    /* ================= LEFT BOTTOM TEXT ================= */
+    .left-bottom-title {
+      font-size: 1.6rem;
+      line-height: 1;
+      color: #603000;
+      font-weight: 900;
+    }
+
+    .left-bottom-line {
+      width: 8%;
+      border: 1.2px solid #603000;
+      margin: 24px 0px;
+    }
+
+    .hero-left-bottom {
+      grid-column: 1;
+      grid-row: 3;
+      align-self: end;
+      font-family: 'satoshi', sans-serif;
+      font-size: 0.85rem;
+      line-height: 1.1rem;
+      max-width: 280px;
+      font-weight: 500;
+    }
+
+    /* ================= RIGHT ================= */
+    .hero-right {
+      grid-column: 3;
+      grid-row: 3;
+      align-self: end;
+      text-align: right;
+      z-index: 3;
+    }
+
+    .hero-right h2 {
+      font-size: 4.8rem;
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--secondary);
+      white-space: nowrap;
+      margin-left: -20vw;
+      margin-bottom: 10vh;
+    }
+
+    .underline {
+      /* width: 80%; */
+      height: 1px;
+      background: var(--secondary);
+      margin: 1.2rem 0 1.2rem auto;
+    }
+
+    .scroll-indicator {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      font-family: 'satoshi', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: .5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .scroll-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      /* arrows + text stay close */
+    }
+
+    /* CAMERA */
+    .camera {
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    /* KEEP VIDEO ALWAYS CENTERED */
+    .video-container {
+      transform-origin: center center;
+    }
+
+    /* FIX FULLSCREEN STATE */
+    .video-fullscreen {
+      position: fixed !important;
+      inset: 0;
+      width: 100vw !important;
+      height: 100vh !important;
+      border-radius: 0 !important;
+      filter: blur(0) !important;
+      z-index: 999;
+    }
+
+
+    /* ================= INLINE 3 ARROW SCROLL HINT ================= */
+
+    .scroll-arrows {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-right: 5px;
+      transform: translateY(-5px);
+    }
+
+    .scroll-arrows i {
+      width: 6px;
+      height: 6px;
+      border-right: 1.6px solid currentColor;
+      border-bottom: 1.6px solid currentColor;
+      transform: rotate(45deg);
+      opacity: 0;
+      animation: arrowFlow 1.6s infinite;
+    }
+
+    .scroll-arrows i:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .scroll-arrows i:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .scroll-arrows i:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes arrowFlow {
+      0% {
+        opacity: 0;
+        transform: translateY(-4px) rotate(45deg);
+      }
+
+      30% {
+        opacity: 0.7;
+      }
+
+      60% {
+        opacity: 0;
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a class="nav-link"><span>Home</span><span>Home</span></a>
+      <a class="nav-link"><span>About</span><span>About</span></a>
+      <a class="nav-link"><span>Menu</span><span>Menu</span></a>
+      <a class="nav-link"><span>Gallery</span><span>Gallery</span></a>
+      <a class="nav-link"><span>Events</span><span>Events</span></a>
+    </div>
+    <div></div>
+    <div class="nav-right">
+      <a class="nav-link"><span>Contact</span><span>Contact</span></a>
+      <a class="nav-link"><span>WhatsApp</span><span>WhatsApp</span></a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-center">
+    <div class="camera">
+      <section class="hero">
+        <div class="hero-left">
+          <h1>Every Food<br> Feels Special</h1>
+        </div>
+
+        <div class="hero-center">
+          <div class="window-wrapper">
+            <div class="video-container">
+              <video autoplay muted loop playsinline>
+                <source src="vid1.mp4" type="video/mp4">
+              </video>
+            </div>
+
+            <div class="glass-overlay">
+              <div class="glass-title"><span class="aashapura"> आशापुरा </span> Garden Restaurant</div>
+            </div>
+
+            <div class="window-frame"></div>
+          </div>
+        </div>
+
+
+        <div class="hero-left-bottom" id="hero-left-bottom">
+          <div class="left-bottom-title">
+            Your <br>freedom to<br> enjoy life.
+          </div>
+          <div class="left-bottom-line"></div>
+          <p>
+            Every flight is designed around your comfort,
+            time, and ambitions — so you can focus on
+            what truly matters, while we take care of
+            everything else.
+          </p>
+        </div>
+
+
+        <div class="hero-right">
+          <h2>Authentic <br> Since 1980</h2>
+          <div class="underline"></div>
+          <div class="scroll-indicator">
+            <div class="scroll-hint">
+              <span class="scroll-arrows">
+                <i></i>
+                <i></i>
+                <i></i>
+              </span>
+              <span>Scroll Down</span>
+            </div>
+
+            <span class="journey-text">Start The Journey</span>
+          </div>
+
+
+        </div>
+
+
+
+    </div>
+    </section>
+  </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* LENIS SMOOTH SCROLL */
+    const lenis = new Lenis({
+      smoothWheel: true,
+      lerp: 0.08
+    });
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+    lenis.on("scroll", ScrollTrigger.update);
+
+    /* SCROLL ANIMATION */
+    const pageCenter = document.querySelector(".page-center");
+    const camera = document.querySelector(".camera");
+    const heroLeft = document.querySelector(".hero-left");
+    const heroLeftBottom = document.querySelector(".hero-left-bottom");
+    const heroRight = document.querySelector(".hero-right");
+    const glassOverlay = document.querySelector(".glass-overlay");
+    const windowFrame = document.querySelector(".window-frame");
+    const videoContainer = document.querySelector(".video-container");
+    const title = document.querySelector(".glass-title");
+    const navbar = document.querySelector(".navbar");
+
+    ScrollTrigger.create({
+      trigger: pageCenter,
+      start: "top top",
+      end: "+=320%",
+      pin: true,
+      scrub: true,
+      anticipatePin: 1,
+
+      onUpdate(self) {
+        const p = self.progress; // 0 → 1
+
+        /* CAMERA SCALE */
+        const camScale = gsap.utils.mapRange(0, 1, 1, 3.2, p);
+        gsap.set(camera, { scale: camScale });
+
+        /* SIDE TEXT SLIDE */
+        gsap.set(heroLeft, { xPercent: -p * 80, opacity: 1 - p * 1.1 });
+        gsap.set(heroLeftBottom, { xPercent: -p * 80, opacity: 1 - p * 1.1 });
+        gsap.set(heroRight, { xPercent: p * 80, opacity: 1 - p * 1.1 });
+
+        /* GLASS FADE */
+        gsap.set(windowFrame, { opacity: 1 - p * 1.1 });
+
+        /* VIDEO FULLSCREEN EFFECT */
+        if (p > 0.7) {
+          const d = (p - 0.7) / 0.3;
+          gsap.set(videoContainer, {
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            xPercent: -50,
+            yPercent: -50,
+            width: `${76 + d * 24}vw`,
+            height: `${85 + d * 15}vh`,
+            borderRadius: `${160 - d * 160}px`,
+            filter: `blur(${4 + d * 16}px)`,
+            zIndex: 1
+          });
+        } else {
+          gsap.set(videoContainer, {
+            position: "absolute",
+            top: "7%",
+            left: "12%",
+            width: "76%",
+            height: "85%",
+            borderRadius: "160px",
+            filter: "blur(4px)",
+            xPercent: 0,
+            yPercent: 0
+          });
+        }
+
+        /* ===============================
+   NAVBAR COLOR CHANGE
+================================ */
+
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        // progress for nav color (0 → 1)
+        const navProgress = gsap.utils.clamp(0, 1, (p - 0.65) / 0.15);
+
+        // interpolate color
+        navLinks.forEach(link => {
+          gsap.set(link, {
+            color: gsap.utils.interpolate("#603000", "#ffffff", navProgress)
+          });
+        });
+
+
+        /* ===============================
+           GLASS TITLE ANIMATION
+        ================================ */
+        // Navbar center absolute
+        const navRect = navbar.getBoundingClientRect();
+        const navCenterY = navRect.top + navRect.height / 2;
+
+        const windowCenterY = window.innerHeight / 5.5;
+
+        // Move Y: center → navbar center, max at 70%
+        const titleProgress = gsap.utils.clamp(0, 1, p / 0.7);
+        const moveY = (navCenterY - windowCenterY) * titleProgress;
+
+        // Scale 1 → 0.7
+        const scale = 1 - .6 * titleProgress;
+
+        // Color change: light → dark
+        const color = titleProgress < .6 ? "#FEF8E8" : "#fffff";
+
+        gsap.set(title, {
+          y: moveY,
+          scale: scale,
+          color: color,
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          xPercent: -50,
+          yPercent: -50,
+          transformOrigin: "center center",
+          zIndex: 9999,
+          pointerEvents: "none"
+        });
+      }
+    });
+
+    ScrollTrigger.refresh();
+
+  </script>
+
+</body>
+
+</html>

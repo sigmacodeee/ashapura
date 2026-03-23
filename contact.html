@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Contact Us | Ashapura Garden Restaurant</title>
+    <link rel="icon" href="data:,">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Get in touch with Ashapura Garden Restaurant. Book a table, plan an event, or just say hello. Located in Vastrapur, Ahmedabad. Call us at +91 98765 43210." />
+    <meta name="keywords" content="contact ashapura garden, restaurant ahmedabad contact, table booking, event inquiry, vastrapur restaurant" />
+    <meta name="author" content="Ashapura Garden" />
+    <meta name="geo.region" content="IN-GJ" />
+    <meta name="geo.placename" content="Ahmedabad" />
+    <meta name="geo.position" content="23.0225;72.5714" />
+    <meta name="ICBM" content="23.0225, 72.5714" />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Contact Ashapura Garden Restaurant" />
+    <meta property="og:description" content="Reach out to us for reservations, events, or inquiries. We'd love to hear from you." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop" />
+    <meta property="og:url" content="https://www.ashapuragarden.com/contact" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact Ashapura Garden Restaurant" />
+    <meta name="twitter:description" content="Get in touch with us for reservations, events, or inquiries." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop" />
+    
+    <!-- Canonical URL -->
+    <meta rel="canonical" href="https://www.ashapuragarden.com/contact" />
+    
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <style>
+        /* ================= SAME EXISTING CSS ================= */
+        @font-face {
+            font-family: 'TT Ramillas regular';
+            src: url('fonts/ttramillas_regular.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TT Ramillas medium';
+            src: url('fonts/ttramillas_medium.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'satoshi';
+            src: url('fonts/Satoshi-Regular.woff2') format('woff2');
+            font-display: swap;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #FEF8E8;
+            --secondary: #603000;
+            --accent: #1C1C1C;
+            --dark: #2c2c2c;
+        }
+
+        html {
+            font-family: "satoshi", sans-serif;
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--primary);
+            color: #2c2c2c;
+            font-family: "Satoshi", sans-serif;
+            font-size: clamp(14px, 1vw, 18px);
+            font-weight: 500;
+            line-height: 1.4;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Navbar (same) */
+        .navbar {
+            position: fixed;
+            top: .3rem;
+            left: 0;
+            padding: 0 6.5rem;
+            width: 100vw;
+            z-index: 100000;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            gap: 2.2rem;
+        }
+
+        .nav-right {
+            justify-content: flex-end;
+        }
+
+        .nav-link {
+            position: relative;
+            height: 1.2em;
+            overflow: hidden;
+            font-family: 'satoshi', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .nav-link span {
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nav-link span:last-child {
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+
+        .nav-link:hover span:first-child {
+            transform: translateY(-120%);
+        }
+
+        .nav-link:hover span:last-child {
+            transform: translateY(-100%);
+        }
+
+        .nav-center img {
+            height: 60px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 10001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--primary);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+            transition: transform 0.6s;
+            flex-direction: column;
+            pointer-events: none;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .mobile-links a {
+            font-family: 'TT Ramillas medium', serif;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+            display: block;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1.5rem;
+                height: 80px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                top: 0;
+            }
+            .nav-left,
+            .nav-link { display: none; }
+            .nav-center img { height: 45px; }
+            .hamburger { display: flex; }
+            .hamburger.active span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2 {
+            font-family: 'TT Ramillas medium', serif;
+            color: var(--secondary);
+        }
+
+        h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* ===== CONTACT PAGE SPECIFIC STYLES ===== */
+        .contact-hero {
+            padding: 180px 20px 60px;
+            text-align: center;
+            background: var(--primary);
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 1rem auto 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Contact Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border: 1px solid rgba(96, 48, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .info-card i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .info-card h3 {
+            font-family: 'TT Ramillas regular', serif;
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .info-card a:hover {
+            border-bottom-color: var(--secondary);
+        }
+
+        /* Business Hours */
+        .hours-card {
+            background: white;
+            padding: 2rem;
+            border: 1px solid rgba(96, 48, 0, 0.1);
+        }
+
+        .hours-card h3 {
+            font-family: 'TT Ramillas regular', serif;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed rgba(96, 48, 0, 0.1);
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-day {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .hours-time {
+            color: #666;
+        }
+
+        /* ===== FEATURES CARDS ===== */
+        .contact-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border: 1px solid rgba(96, 48, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 30px rgba(96, 48, 0, 0.1);
+        }
+
+        .feature-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .feature-header i {
+            font-size: 2rem;
+            color: var(--secondary);
+            opacity: 0.8;
+        }
+
+        .feature-badge {
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'TT Ramillas regular', serif;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .review-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-family: 'TT Ramillas medium', serif;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .review-logos {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .review-logos i {
+            font-size: 1.8rem;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .review-logos i:hover {
+            color: var(--secondary);
+        }
+
+        /* QR Code */
+        .qr-wrapper {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .qr-code {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 0.5rem;
+        }
+
+        .qr-text {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            letter-spacing: 1px;
+        }
+
+        .feature-desc {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Chef Special */
+        .chef-special {
+            background: linear-gradient(145deg, white 0%, #fff9f0 100%);
+        }
+
+        .chef-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.2rem 1rem;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .special-dish {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dish-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .dish-info h4 {
+            font-family: 'satoshi', sans-serif;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .dish-name {
+            font-family: 'TT Ramillas regular', serif;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 0.2rem;
+        }
+
+        .dish-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+
+        .dish-price {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .chef-message {
+            background: rgba(96, 48, 0, 0.05);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .chef-message i {
+            color: var(--secondary);
+            opacity: 0.3;
+            font-size: 1rem;
+            margin-right: 0.3rem;
+        }
+
+        .chef-message p {
+            font-style: italic;
+            color: #4a4a4a;
+            margin-bottom: 0.3rem;
+        }
+
+        .chef-message span {
+            font-size: 0.85rem;
+            color: var(--secondary);
+        }
+
+        /* WhatsApp Card */
+        .whatsapp-card {
+            background: #075e54;
+            color: white;
+            border-color: transparent;
+        }
+
+        .whatsapp-card .feature-header i {
+            color: white;
+        }
+
+        .whatsapp-card h3 {
+            color: white;
+        }
+
+        .whatsapp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .status.online {
+            color: #25D366;
+        }
+
+        .status.online::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #25D366;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .quick-replies {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .quick-reply {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-reply:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .quick-reply i {
+            margin-right: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .feature-btn {
+            display: block;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            margin: 1.5rem 0 0;
+        }
+
+        .feature-btn.small {
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .feature-btn.small.outline {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .feature-btn.small.outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .feature-btn.whatsapp {
+            background: #25D366;
+            color: white;
+            font-weight: 600;
+        }
+
+        .feature-btn.whatsapp i {
+            margin-right: 0.5rem;
+        }
+
+        .feature-btn:hover {
+            background: var(--accent);
+        }
+
+        .qr-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .response-time {
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 0 0 4rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border: 1px solid rgba(96, 48, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 1px solid rgba(96, 48, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            padding: 4rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(96, 48, 0, 0.1);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .faq-item {
+            padding: 1rem 0;
+            border-bottom: 1px dashed rgba(96, 48, 0, 0.1);
+        }
+
+        .faq-question {
+            font-family: 'TT Ramillas regular', serif;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER SECTION - ORIGINAL JUST CENTERED ===== */
+        footer {
+            background-color: var(--secondary);
+            width: 100%;
+            margin-top: 80px;
+            padding: 60px 0 20px 0;
+        }
+
+        .footer-container {
+            margin: 0 auto;
+            padding: 0 20px;
+            color: var(--primary);
+        }
+
+        /* Top Section */
+        .top-section-wrapper {
+            display: flex;
+            align-items: stretch;
+            position: relative;
+        }
+
+        .side-block {
+            margin: 0 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex: 1;
+        }
+
+        .logo-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+        }
+
+        .logo-center img {
+            width: 200px;
+            height: auto;
+        }
+
+        .top-col {
+            padding: 20px 20px 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+            border-top: 1px solid #fef8e884;
+            border-bottom: 1px solid #fef8e884;
+        }
+
+        .inner-border {
+            border-right: 1px solid #fef8e884;
+        }
+
+        .label {
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: -.3px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .f-content {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: -25px;
+            color: var(--primary);
+        }
+
+        /* Navigation Grid */
+        .nav-grid-wrapper {
+            display: flex;
+            padding-top: 80px;
+            padding-bottom: 180px;
+        }
+
+        .nav-side-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex: 1;
+        }
+
+        .nav-logo-gap {
+            width: 154px;
+        }
+
+        .nav-col {
+            text-align: center;
+        }
+
+        .nav-label {
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: white;
+        }
+
+        /* Hero Title */
+        .hero-title-wrap {
+            padding: 20px 40px 40px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: "TT Ramillas medium", sans-serif;
+            font-size: 17vw;
+            text-transform: uppercase;
+            color: var(--primary);
+            line-height: 0.8;
+            letter-spacing: -0.01em;
+            font-weight: 500;
+            opacity: 0.6;
+            margin: 0;
+        }
+
+        .hero-subtitle {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            letter-spacing: 0.3em;
+            text-align: right;
+            margin-right: 20px;
+            font-weight: 500;
+            display: block;
+            opacity: 0.6;
+        }
+
+        /* Footer Bar */
+        .footer-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-features { grid-template-columns: repeat(2, 1fr); }
+            .faq-grid { grid-template-columns: 1fr; }
+            
+            .top-section-wrapper {
+                flex-wrap: wrap;
+            }
+
+            .logo-center {
+                width: 100%;
+                padding: 40px 0;
+                order: -1;
+            }
+
+            .nav-grid-wrapper {
+                flex-direction: column;
+                padding-bottom: 80px;
+            }
+
+            .nav-logo-gap {
+                display: none;
+            }
+
+            .nav-col {
+                padding: 20px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .info-cards { grid-template-columns: 1fr; }
+            .contact-features { grid-template-columns: 1fr; }
+            .quick-replies { grid-template-columns: 1fr; }
+            .faq-section { padding: 2rem; }
+            
+            .side-block {
+                grid-template-columns: 1fr;
+                margin: 0 15px;
+            }
+
+            .top-col {
+                border-right: none;
+                border-bottom: 1px solid #fef8e884;
+                min-height: 160px;
+            }
+
+            .inner-border {
+                border-right: none;
+            }
+
+            .f-content {
+                margin-bottom: 0;
+            }
+
+            .hero-title {
+                font-size: 17vw;
+            }
+
+            .hero-subtitle {
+                font-size: 14px;
+                text-align: center;
+                margin-right: 0;
+            }
+
+            .footer-bar {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .social-links { gap: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 14vw;
+            }
+            
+            .logo-center img {
+                width: 150px;
+            }
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="nav-link"><span>Home</span><span>Home</span></a>
+            <a href="about.html" class="nav-link"><span>About</span><span>About</span></a>
+            <a href="menu.html" class="nav-link"><span>Menu</span><span>Menu</span></a>
+        </div>
+        <div class="nav-center">
+            <img src="img/logo.png" alt="Ashapura Garden Logo">
+        </div>
+        <div class="nav-right">
+            <a href="gallery.html" class="nav-link"><span>Gallery</span><span>Gallery</span></a>
+            <a href="events.html" class="nav-link"><span>Events</span><span>Events</span></a>
+            <a href="contact.html" class="nav-link"><span>Contact</span><span>Contact</span></a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero reveal">
+        <h1>Get in Touch</h1>
+        <p>We'd love to hear from you. Reach out for reservations, event inquiries, or just to say hello.</p>
+    </section>
+
+    <!-- Contact Main Content -->
+    <div class="container">
+        <!-- Contact Grid -->
+        <div class="contact-grid">
+            <!-- Left Side - Info -->
+            <div class="reveal">
+                <div class="info-cards">
+                    <div class="info-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Call Us</h3>
+                        <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                        <p><a href="tel:+919876543211">+91 98765 43211</a></p>
+                        <p style="font-size: 0.9rem; margin-top: 1rem;">24/7 for reservations</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:info@ashapuragarden.in">info@ashapuragarden.in</a></p>
+                        <p><a href="mailto:events@ashapuragarden.in">events@ashapuragarden.in</a></p>
+                        <p style="font-size: 0.9rem; margin-top: 1rem;">Reply within 24 hours</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Visit Us</h3>
+                        <p>Opp. Vastrapur Lake,</p>
+                        <p>Vastrapur, Ahmedabad,</p>
+                        <p>Gujarat 380015</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Quick Help</h3>
+                        <p><a href="#">FAQ Section</a></p>
+                        <p><a href="#">Booking Policy</a></p>
+                        <p><a href="#">Private Events</a></p>
+                    </div>
+                </div>
+
+                <!-- Business Hours -->
+                <div class="hours-card">
+                    <h3>Opening Hours</h3>
+                    <div class="hours-row">
+                        <span class="hours-day">Monday - Thursday</span>
+                        <span class="hours-time">11:30 AM – 11:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Friday - Saturday</span>
+                        <span class="hours-time">11:30 AM – 12:00 AM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Sunday</span>
+                        <span class="hours-time">11:30 AM – 11:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Kitchen closes</span>
+                        <span class="hours-time">30 minutes before closing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Features Cards -->
+            <div class="contact-features reveal">
+                <!-- Google Review Card -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <i class="fas fa-star"></i>
+                        <span class="feature-badge">4.8 ★</span>
+                    </div>
+                    <h3>Love from our guests</h3>
+                    <div class="review-stats">
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Google Reviews</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.8</span>
+                            <span class="stat-label">Average Rating</span>
+                        </div>
+                    </div>
+                    <div class="review-logos">
+                        <i class="fab fa-google"></i>
+                        <i class="fab fa-tripadvisor"></i>
+                        <i class="fab fa-zomato"></i>
+                    </div>
+                    <a href="#" class="feature-btn">
+                        <i class="fas fa-pen"></i>
+                        Write a review
+                    </a>
+                </div>
+
+                <!-- QR Code Menu Card -->
+                <div class="feature-card">
+                    <div class="qr-wrapper">
+                        <div class="qr-code">
+                            <!-- SVG QR Code (sample) -->
+                            <svg viewBox="0 0 100 100" width="120" height="120">
+                                <rect width="100" height="100" fill="#603000" rx="8"/>
+                                <rect x="10" y="10" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="30" y="10" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="50" y="10" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="10" y="30" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="30" y="30" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="70" y="30" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="10" y="50" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="50" y="50" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="70" y="50" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="30" y="70" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="50" y="70" width="15" height="15" fill="#FEF8E8"/>
+                                <rect x="70" y="70" width="15" height="15" fill="#FEF8E8"/>
+                            </svg>
+                        </div>
+                        <span class="qr-text">Scan to view menu</span>
+                    </div>
+                    <h3>Digital Menu</h3>
+                    <p class="feature-desc">View our full menu with prices and descriptions on your phone.</p>
+                    <div class="qr-actions">
+                        <a href="#" class="feature-btn small">
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                        <a href="#" class="feature-btn small outline">
+                            <i class="fas fa-share"></i> Share
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Chef's Special Card -->
+                <div class="feature-card chef-special">
+                    <div class="chef-badge">👨‍🍳 Chef's Choice</div>
+                    <div class="special-dish">
+                        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=2070&auto=format&fit=crop" alt="Today's Special" class="dish-img">
+                        <div class="dish-info">
+                            <h4>Today's Special</h4>
+                            <p class="dish-name">Gujarati Thali</p>
+                            <p class="dish-desc">5 vegetables, dal, kadhi, rice, roti, farsan & sweets</p>
+                            <span class="dish-price">₹1299</span>
+                        </div>
+                    </div>
+                    <div class="chef-message">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Made with love and traditional spices, just like grandma's kitchen."</p>
+                        <span>- Chef Rajesh</span>
+                    </div>
+                    <a href="#" class="feature-btn">
+                        <i class="fas fa-utensils"></i>
+                        See full menu
+                    </a>
+                </div>
+
+                <!-- WhatsApp Connect Card -->
+                <div class="feature-card whatsapp-card">
+                    <div class="whatsapp-header">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="status online">● Online</span>
+                    </div>
+                    <h3>Chat with us</h3>
+                    <p class="feature-desc">Quick replies on WhatsApp. Get instant help with reservations, inquiries, and more.</p>
+                    <div class="quick-replies">
+                        <button class="quick-reply" onclick="window.open('https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20table')">
+                            <i class="fas fa-calendar-check"></i> Book table
+                        </button>
+                        <button class="quick-reply" onclick="window.open('https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20know%20about%20events')">
+                            <i class="fas fa-glass-cheers"></i> Event inquiry
+                        </button>
+                        <button class="quick-reply" onclick="window.open('https://wa.me/919876543210?text=Hi%2C%20I%20need%20catering%20details')">
+                            <i class="fas fa-truck"></i> Catering
+                        </button>
+                    </div>
+                    <a href="https://wa.me/919876543210" class="feature-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        Start chat
+                    </a>
+                    <p class="response-time">⏱️ Usually replies within 5 minutes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section reveal">
+            <h2>Find Us Here</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.9876543210123!2d72.5714!3d23.0225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAxJzIxLjAiTiA3MsKwMzQnMTcuMCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section reveal">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">Do I need to make a reservation?</div>
+                    <div class="faq-answer">While walk-ins are welcome, we recommend reservations especially on weekends to ensure availability.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you accommodate dietary restrictions?</div>
+                    <div class="faq-answer">Yes, please inform us about any allergies or dietary requirements when booking.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is there parking available?</div>
+                    <div class="faq-answer">Yes, we have complimentary valet parking for all our guests.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer home delivery?</div>
+                    <div class="faq-answer">Yes, we partner with Zomato and Swiggy for deliveries within Ahmedabad.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I host a private event?</div>
+                    <div class="faq-answer">Absolutely! Contact our events team for customized packages.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is your cancellation policy?</div>
+                    <div class="faq-answer">Free cancellation up to 2 hours before your reservation time.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links reveal">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+
+    <!-- ========== FOOTER - ORIGINAL JUST CENTERED ========== -->
+    <footer>
+        <div class="footer-container">
+            <!-- Top Section -->
+            <div class="top-section-wrapper">
+                <div class="side-block">
+                    <div class="top-col inner-border">
+                        <span class="label">Ashapura</span>
+                        <div class="f-content">3415 SW College Rd<br>Ocala, FL 34474</div>
+                    </div>
+                    <div class="top-col">
+                        <span class="label">Hours</span>
+                        <div class="f-content">
+                            Tue-Fri 11 AM — 10 PM<br>
+                            Sat-Sun 12 PM — 10 PM<br>
+                            Mon (Closed)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="logo-center">
+                    <img src="img/logo.png" alt="Ashapura Garden Logo">
+                </div>
+
+                <div class="side-block">
+                    <div class="top-col inner-border">
+                        <span class="label">Contact</span>
+                        <div class="f-content">+1 (352) 873-8500<br>E-mail Us</div>
+                    </div>
+                    <div class="top-col">
+                        <span class="label">Newsletter</span>
+                        <div class="f-content">Get the latest updates.<br>Coming soon...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Grid -->
+            <div class="nav-grid-wrapper">
+                <div class="nav-side-block">
+                    <div class="nav-col">
+                        <span class="nav-label">Discover</span>
+                        <ul class="nav-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="catering.html">Catering</a></li>
+                            <li><a href="gift-cards.html">Gift Cards</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-col">
+                        <span class="nav-label">Legals</span>
+                        <ul class="nav-links">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms and Conditions</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nav-logo-gap"></div>
+
+                <div class="nav-side-block">
+                    <div class="nav-col">
+                        <span class="nav-label">Actions</span>
+                        <ul class="nav-links">
+                            <li><a href="menu.html">View Menu</a></li>
+                            <li><a href="#">Order Gift Card</a></li>
+                            <li><a href="#">Reserve a Table</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-col">
+                        <span class="nav-label">Socials</span>
+                        <ul class="nav-links">
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Facebook</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Title -->
+            <div class="hero-title-wrap">
+                <h1 class="hero-title">Ashapura</h1>
+                <span class="hero-subtitle">Garden restaurant</span>
+            </div>
+
+            <!-- Footer Bar -->
+            <div class="footer-bar">
+                <div>© 2026 Ashapura Garden Restaurant</div>
+                <div>All Rights Reserved</div>
+                <div>Made by <a href="#" style="color: inherit; text-decoration: none;">SIGMA CODE</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Schema Markup for Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Ashapura Garden Restaurant",
+        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Opp. Vastrapur Lake, Vastrapur",
+            "addressLocality": "Ahmedabad",
+            "addressRegion": "Gujarat",
+            "postalCode": "380015",
+            "addressCountry": "IN"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "23.0225",
+            "longitude": "72.5714"
+        },
+        "url": "https://www.ashapuragarden.com",
+        "telephone": "+919876543210",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "11:30",
+                "closes": "23:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Friday", "Saturday"],
+                "opens": "11:30",
+                "closes": "00:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "11:30",
+                "closes": "23:00"
+            }
+        ],
+        "priceRange": "₹₹",
+        "servesCuisine": ["Gujarati", "Kathiyawadi", "Punjabi", "Chinese", "Street Food"],
+        "acceptsReservations": "Yes"
+    }
+    </script>
+
+    <script>
+        // Mobile Menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Reveal animations on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        function revealOnScroll() {
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Run once on load
+    </script>
+</body>
+</html>
